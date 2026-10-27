@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Input Penduduk</title>
+</head>
+<body>
+    <h2>Form Input Data Penduduk</h2>
+
+    <form action="input.php"
+          method="post"
+          onsubmit="return validateForm()">
+
+        <label for="kec">Kecamatan:</label><br>
+        <input type="text" id="kec" name="kecamatan" required>
+        <br><br>
+
+        <label for="long">Longitude:</label><br>
+        <input type="number" step="any" id="long" name="longitude" required>
+        <br><br>
+
+        <label for="lat">Latitude:</label><br>
+        <input type="number" step="any" id="lat" name="latitude" required>
+        <br><br>
+
+        <label for="luas">Luas:</label><br>
+        <input type="number" step="any" id="luas" name="luas" required>
+        <br><br>
+
+        <label for="jml_ppdk">Jumlah Penduduk:</label><br>
+        <input type="number" id="jml_ppdk"
+               name="jumlah_penduduk" min="0" required>
+        <br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <p id="informasi"></p>
+
+    <script>
+        function validateForm() {
+            let luas = document.getElementById("luas").value;
+            let informasi = document.getElementById("informasi");
+
+            if (luas === "" || isNaN(luas) || Number(luas) <= 0) {
+                informasi.innerHTML =
+                    "Luas harus berupa angka lebih dari 0.";
+                return false;
+            }
+
+            informasi.innerHTML = "";
+            return true;
+        }
+    </script>
+</body>
+</html>
